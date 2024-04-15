@@ -56,5 +56,16 @@ class TestGame(unittest.TestCase):
         self.assertEqual(ball.xcor(), -340)
         self.assertEqual(ball_dx, -initial_ball_dx)
 
+    def test_ball_hits_right_top_border(self):
+        ball.goto(0, 300)
+        initial_ball_y = ball.ycor()
+        initial_ball_dy = ball_dy
+        if ball.ycor() > 290:
+            ball.sety(290)
+            ball_dy *= -1
+
+        self.assertEqual(ball.ycor(), 290)
+        self.assertEqual(ball_dy, -initial_ball_dy)
+
 if __name__ == '__main__':
     unittest.main()
