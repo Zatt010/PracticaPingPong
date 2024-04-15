@@ -13,7 +13,7 @@ player_b_score = 0
 win = t.Screen()    # creating a window
 win.title("Ping-Pong Game") # Giving name to the game.
 win.bgcolor('black')    # providing color to the HomeScreen
-win.setup(width=800,height=600) # Size of the game panel 
+win.setup(width=800,height=600) # Size of the game panel
 win.tracer(0)   # which speed up's the game.
 
 # Creating left paddle for the game
@@ -94,9 +94,6 @@ win.onkeypress(paddle_left_down,"e")
 win.onkeypress(paddle_right_up,"Up")
 win.onkeypress(paddle_right_down,"Down")
 
-
-
-
 # Main Game Loop
 
 while True:
@@ -124,7 +121,6 @@ while True:
         player_a_score = player_a_score + 1
         pen.clear()
         pen.write("Player A: {}                    Player B: {} ".format(player_a_score,player_b_score),align="center",font=('Monaco',24,"normal"))
-        os.system("afplay wallhit.wav&")
 
 
 
@@ -134,7 +130,6 @@ while True:
         player_b_score = player_b_score + 1
         pen.clear()
         pen.write("Player A: {}                    Player B: {} ".format(player_a_score,player_b_score),align="center",font=('Monaco',24,"normal"))
-        os.system("afplay wallhit.wav&")
 
 
     # Handling the collisions with paddles.
@@ -142,9 +137,7 @@ while True:
     if(ball.xcor() > 340) and (ball.xcor() < 350) and (ball.ycor() < paddle_right.ycor() + 40 and ball.ycor() > paddle_right.ycor() - 40):
         ball.setx(340)
         ball_dx = ball_dx * -1
-        os.system("afplay paddle.wav&")
 
     if(ball.xcor() < -340) and (ball.xcor() > -350) and (ball.ycor() < paddle_left.ycor() + 40 and ball.ycor() > paddle_left.ycor() - 40):
         ball.setx(-340)
         ball_dx = ball_dx * -1
-        os.system("afplay paddle.wav&")
