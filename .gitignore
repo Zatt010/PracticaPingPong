@@ -1,0 +1,5 @@
+sonar-project.properties
+.coverage
+.sonar
+.scannerwork
+__pycache__
