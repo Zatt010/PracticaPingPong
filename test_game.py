@@ -66,7 +66,7 @@ class TestGame(unittest.TestCase):
 
         self.assertEqual(ball.ycor(), 290)
         self.assertEqual(ball_dy, -initial_ball_dy)
-        
+
     def test_ball_hits_right_width_border(self):
         ball.goto(400, 0)  # Posición de la bola sobre el borde derecho
         initial_ball_x = ball.xcor()
@@ -85,6 +85,17 @@ class TestGame(unittest.TestCase):
         self.assertEqual(ball.xcor(), 0)
         self.assertEqual(ball_dx, -initial_ball_dx)
         self.assertEqual(player_a_score, initial_score_a + 1)
+
+    def test_ball_hits_paddle_right(self):
+        ball.goto(345, paddle_right.ycor())
+        initial_ball_x = ball.xcor()
+        initial_ball_dx = ball_dx
+        if (340 < ball.xcor() < 350) and (paddle_right.ycor() - 40 < ball.ycor() < paddle_right.ycor() + 40):
+            ball.setx(340)
+            ball_dx *= -1
+
+        self.assertEqual(ball.xcor(), 340)
+        self.assertEqual(ball_dx, -initial_ball_dx)
 
 if __name__ == '__main__':
     unittest.main()
