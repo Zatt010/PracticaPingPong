@@ -45,18 +45,16 @@ class TestGame(unittest.TestCase):
 
     def test_ball_hits_paddle_left(self):
         # Simular que la bola golpea la paleta izquierda
-        ball.goto(-345, paddle_left.ycor())  # Colocar la bola justo al borde de la paleta izquierda
+        ball.goto(-345, paddle_left.ycor())
         initial_ball_x = ball.xcor()
         initial_ball_dx = ball_dx
 
-        # Ejecutar la lógica del juego que maneja la colisión con la paleta izquierda
         if (-350 < ball.xcor() < -340) and (-40 < ball.ycor() - paddle_left.ycor() < 40):
             ball.setx(-340)
             ball_dx *= -1
 
-        # Verificar que la posición de la bola y la dirección de movimiento hayan cambiado
-        self.assertEqual(ball.xcor(), -340)  # La bola debe ser ajustada a -340 si golpea la paleta izquierda
-        self.assertEqual(ball_dx, -initial_ball_dx)  # La dirección de movimiento de la bola debe invertirse
+        self.assertEqual(ball.xcor(), -340)
+        self.assertEqual(ball_dx, -initial_ball_dx)
 
 if __name__ == '__main__':
     unittest.main()
