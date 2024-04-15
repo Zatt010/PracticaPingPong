@@ -66,6 +66,25 @@ class TestGame(unittest.TestCase):
 
         self.assertEqual(ball.ycor(), 290)
         self.assertEqual(ball_dy, -initial_ball_dy)
+        
+    def test_ball_hits_right_width_border(self):
+        ball.goto(400, 0)  # Posición de la bola sobre el borde derecho
+        initial_ball_x = ball.xcor()
+        initial_ball_dx = ball_dx
+        initial_score_a = player_a_score
+
+        # Simular el rebote en el borde derecho
+        if ball.xcor() > 390:
+            ball.goto(0, 0)
+            ball_dx *= -1
+            player_a_score += 1
+            pen.clear()
+            pen.write("Player A: {}                    Player B: {} ".format(player_a_score, player_b_score),
+                        align="center", font=('Monaco', 24, "normal"))
+
+        self.assertEqual(ball.xcor(), 0)
+        self.assertEqual(ball_dx, -initial_ball_dx)
+        self.assertEqual(player_a_score, initial_score_a + 1)
 
 if __name__ == '__main__':
     unittest.main()
