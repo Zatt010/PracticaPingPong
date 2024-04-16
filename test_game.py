@@ -32,6 +32,13 @@ class TestGameLogic(unittest.TestCase):
         game_logic.move_paddle_left_down(self.paddle_left)
         self.assertEqual(self.paddle_left.ycor(), initial_y - 20)
 
+    def test_ball_movement(self):
+        # Simular movimiento de la pelota y verificar las nuevas coordenadas
+        initial_x, initial_y = self.ball.xcor(), self.ball.ycor()
+        game_logic.game_loop(self.win, self.paddle_left, self.paddle_right, self.ball, self.pen)
+        self.assertNotEqual(self.ball.xcor(), initial_x)
+        self.assertNotEqual(self.ball.ycor(), initial_y)
+
     def test_score_update(self):
         # Simular incremento de puntuación y verificar la actualización del marcador
         game_logic.player_a_score = 0
