@@ -7,6 +7,12 @@ def game_setup():
     win, paddle_left, paddle_right, ball, pen = game_logic.initialize_game()
     return win, paddle_left, paddle_right, ball, pen
 
+def test_move_paddle_left_up(game_setup):
+    win, paddle_left, paddle_right, ball, pen = game_setup
+    initial_y = paddle_left.ycor()
+    game_logic.move_paddle_left_up(paddle_left)
+    assert paddle_left.ycor() == initial_y + 20
+
 def test_move_paddle_right_up(game_setup):
     win, paddle_left, paddle_right, ball, pen = game_setup
     initial_y = paddle_right.ycor()
