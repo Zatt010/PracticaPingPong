@@ -13,6 +13,12 @@ class TestGameLogic(unittest.TestCase):
         initial_y = self.paddle_right.ycor()
         game_logic.move_paddle_right_up(self.paddle_right)
         self.assertEqual(self.paddle_right.ycor(), initial_y + 20)
+    
+    def test_move_paddle_left_up(self):
+        # Simular movimiento hacia arriba de la paleta izquierda
+        initial_y = self.paddle_left.ycor()
+        game_logic.move_paddle_left_up(self.paddle_left)
+        self.assertEqual(self.paddle_left.ycor(), initial_y + 20)
 
     def test_move_paddle_right_down(self):
         # Simular movimiento hacia abajo de la paleta derecha
