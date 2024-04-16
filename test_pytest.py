@@ -31,6 +31,12 @@ def test_move_paddle_right_down(game_setup):
     game_logic.move_paddle_right_down(paddle_right)
     assert paddle_right.ycor() == initial_y - 20
 
+def test_ball_movement(game_setup):
+    win, paddle_left, paddle_right, ball, pen = game_setup
+    initial_x, initial_y = ball.xcor(), ball.ycor()
+    game_logic.game_loop(win, paddle_left, paddle_right, ball, pen)
+    assert ball.xcor() != initial_x
+    assert ball.ycor() != initial_y
 
 def test_score_update(game_setup):
     win, paddle_left, paddle_right, ball, pen = game_setup
