@@ -19,11 +19,18 @@ def test_move_paddle_right_up(game_setup):
     game_logic.move_paddle_right_up(paddle_right)
     assert paddle_right.ycor() == initial_y + 20
 
+def test_move_paddle_left_down(game_setup):
+    win, paddle_left, paddle_right, ball, pen = game_setup
+    initial_y = paddle_left.ycor()
+    game_logic.move_paddle_left_down(paddle_left)
+    assert paddle_left.ycor() == initial_y - 20
+
 def test_move_paddle_right_down(game_setup):
     win, paddle_left, paddle_right, ball, pen = game_setup
     initial_y = paddle_right.ycor()
     game_logic.move_paddle_right_down(paddle_right)
     assert paddle_right.ycor() == initial_y - 20
+
 
 def test_score_update(game_setup):
     win, paddle_left, paddle_right, ball, pen = game_setup
